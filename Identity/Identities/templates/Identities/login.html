@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+   	
+   	<html>
+	   	<head>
+	   
+
+
+ 		{% block head %}
+		   		<title>Sign In</title>
+ 		   		{% endblock %}
+ 		   		
+ 		   		
+ 		   		
+ 		   
+ 		   	
+	</head>
+	
+	
+	<body>
+		
+				{% block body %}
+<div class = "container">
+		
+		<h1 class = "font-weight-bold" style = "font-family: Optima; text-align: center;  margin-top: 80px; padding: 30px; "> <small>Access your Health Condition when you need it.</small> </h1>
+
+	
+				<form method="post" >
+
+					{% csrf_token %}
+
+					{{ form.as_p }}
+
+					<button class=" btn btn-primary btn-large " type="submit">Sign In</button>
+
+				</form>
+			</div>
+
+ 		   		{% endblock %}
+		
+	</body>
+	
+</html>

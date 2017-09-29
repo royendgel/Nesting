@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Account</title>
+{% endblock %}
+
+
+{% block body %}
+
+<div class = "container">
+
+<h1 class = "font-weight-bold" style = "font-family: Optima; text-align: center;  margin-top: 80px; padding: 30px; ">Create Account </h1>
+
+<!--# Sent create account user data using the Http post mechanism-->
+
+<form method = "post">
+
+		{% csrf_token %}
+		{{ form.as_p }}
+
+	<button class = "btn btn-primary btn-large" type="submit">Create Account
+	</button>
+	
+</form>
+</div>
+
+{% endblock %}
