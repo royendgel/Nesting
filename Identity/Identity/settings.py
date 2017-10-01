@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	
+
 	'Identities',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+	# 'Identity.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'Identity.urls'
@@ -130,3 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/Identity/'
+
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
