@@ -20,7 +20,12 @@ from Identity import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
 	url(r'^Identity/', include('Identities.urls', namespace = 'Identities')),
+
+    url(r'^nesting/', include('nesting.urls', namespace = 'nesting')),
+    
 	url(r'^$', views.login_redirect, name = 'login_redirect'),
-	
+
+
 ]

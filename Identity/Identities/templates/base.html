@@ -30,13 +30,23 @@
 {% if user.is_authenticated %}
 
 			<ul class = "nav navbar-nav flex-row float-left ">
-
+		        <li class="nav-item"> <a class="nav-link font-weight-bold" style = "font-family: Optima" href = "{% url 'nesting:nesting'%}">  Creator :  {{ user.first_name}} {{ user.last_name}}</a></li>
 						<li class = "nav-item "><a class = "nav-link" href = "{% url 'Identities:logout'%}">Sign Out</a></li>
 						<li class = "nav-item"><a class = "nav-link" href = "{% url 'Identities:view_profile' %}">view Identity </a></li>
  						<li class = "nav-item"><a class = "nav-link" href = "{% url 'Identities:edit_profile' %}">edit Identity </a></li>
+
+								<li class = "nav-item "><a class = "nav-link" href = "{% url 'Identities:change_password'%}">Change password</a></li>
+
+
 			</ul>
 
 {% else %}
+
+<!-- <ul class = "nav navbar-nav flex-row float-left ">
+
+	<li class="nav-item"><a class = "nav-link"href = "{% url 'Identities:reset_password' %}" >Create new password</a></li>
+
+</ul> -->
 
 			<ul class = "nav navbar-nav flex-row float-left ">
 

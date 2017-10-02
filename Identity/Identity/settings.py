@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
 	'Identities',
+	'nesting',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -117,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Jamaica'
 
 USE_I18N = True
 
@@ -139,6 +140,7 @@ LOGIN_EXEMPT_URL = (
 
 			r'Identity/logout/$',
 			r'Identity/register/$',
+			r'Identity/reset-password/$',
 			r'Identity/reset-password/done/$',
 			r'Identity/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
 			r'Identity/reset-password/complete/$',
