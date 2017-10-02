@@ -9,7 +9,6 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -18,7 +17,7 @@ def nest(request):
 	return render(request, 'Identities/nest.html')
 
 
-@login_required
+
 def register(request):
 
 	if request.method == 'POST':
@@ -39,14 +38,14 @@ def register(request):
 		return render(request, 'Identities/create_account.html', var)
 
 
-@login_required
+
 def view_profile(request):
 
 	var = {'user': request.user}
 
 	return render(request, 'Identities/profile.html', var)
 
-@login_required
+
 def edit_profile(request):
 
 	if request.method == 'POST':
@@ -71,7 +70,7 @@ def edit_profile(request):
 
 		return render(request, 'Identities/edit_profile.html', var)
 
-@login_required
+
 def change_password(request):
 
 	if request.method == 'POST':

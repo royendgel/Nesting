@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-	# 'Identity.middleware.LoginRequiredMiddleware',
+	'Identity.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'Identity.urls'
@@ -132,6 +132,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/Identity/'
+
+LOGIN_URL = '/Identity/login/'
+
+LOGIN_EXEMPT_URL = (
+
+			r'Identity/logout/$',
+			r'Identity/register/$',
+			r'Identity/reset-password/done/$',
+			r'Identity/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+			r'Identity/reset-password/complete/$',
+
+)
 
 
 EMAIL_HOST = 'localhost'
