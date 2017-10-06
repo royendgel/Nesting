@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 
 <html>
@@ -7,7 +8,7 @@
 
        {% block head %}
 
-    <title>nesting</title>
+    <title>Nesting</title>
 
     {% endblock %}
 
@@ -17,65 +18,113 @@
 
     {% block body %}
 
-    <div class = "container"  style = "margin: 80px;">
+    <style media="screen">
+      #navigation{
 
-      <div class = "row">
+      margin-top: 90px;
 
-        <div class = "col">
+      }
 
+      .col-md-5{
+                  margin-top: 70px;
 
-              <form method = 'post'>
+      }
 
-              {% csrf_token %}
+.container {
 
-              <p>Create Patient</p>
+}
 
-                 {{ form.as_p }}
+    </style>
 
+    <div class = "container">
 
-              <button class = "btn-primary btn-large btn ">Submit</button>
+            <div class = "row">
+                                <nav class="col-md-3"  id = "navigation">
 
+                                  <ul class = "nav flex-column">
+                                                    <li class = "nav-item"> <a class = "nav-link" style = "font-family: Droid Sans Mono" href = "{% url 'nesting:nesting'%}">Create patient </a></li>
+                                                   <li class = "nav-item"><a class = "nav-link" href = "#" style = "font-family: Droid Sans Mono">See  patient </a></li>
+                                    </ul>
 
-              	</form>
+                                </nav>
 
+            <main class = "col-md-5">
+
+                      <form method = 'post' novalidate>
+
+                   {% csrf_token %}
+                   <div class = "form-row">
+
+                     <div class = "form-group col-sm-6">
+                                   {{ form.NIS.errors }}
+                                   {{ form.NIS}}
+                     </div>
+
+                   <div class = "form-group col-sm-6">
+
+                   </div>
+
+                   </div>
+
+        <div class = "form-row">
+
+          <div class = "form-group col-sm-6">
+                        {{ form.First_Name.errors }}
+                        {{ form.First_Name}}
+          </div>
+
+        <div class = "form-group col-sm-6">
+                      {{ form.Last_Name.errors }}
+                      {{ form.Last_Name}}
+        </div>
 
         </div>
 
-        <div class = "col">
-  {% for Identity in Identities %}
 
+        <div class = "form-group">
+          {{ form.Residence.errors }}
+          {{ form.Residence }}
+        </div>
 
-      <div class = "card" style = "margin: 40px;">
+    
+<button class = "btn-primary btn-large btn ">Submit</button>
 
+ </form>
 
-
-          <div class = "card-header">
-
-    <!-- <p class="font-weight-bold"> {{Identity.First_Name}}  {{Identity.Last_Name}} </p> -->
-          </div>
-
-        <div class = "card-body">
-
-
-
-            <div class = "card-title">
-             <p class = "font-weight-light" style = "font-family: Optima">National Insurance Scheme : {{ Identity.NIS }}</p>
+</div>
+</main>
             </div>
 
 
 
-             <p><small class = "card-text">Created On : {{ Identity.Timestamp }}</small></p>
-
-                <!--<p><small class = "card-text">{{ Identity.Address}}</small></p> -->
-
-      </div>
 
 
-  </div>
-      {% endfor %}
-</div>
+            {% for Identity in Identities %}
 
-  </div>
+            <div class = "row">
+
+              <div class="col-sm" ></div>
+
+              <div class = "col-sm" >
+
+                <div class = "card " style = "margin-top: 40px;">
+
+                        <ul class = "list-group list-group-flush">
+
+                          <li class = "list-group-item"><a class = "nav-link" href="#">{{Identity.First_Name}}  {{Identity.Last_Name}} </a></li>
+
+                          <li class = "list-group-item"><small><br>NIS: </small> {{ Identity.NIS }}</li>
+
+                        </ul>
+                </div>
+
+              </div>
+
+            <div class="col-sm"></div>
+
+            </div>
+                      {% endfor %}
+
 
     {% endblock %}
 

@@ -20,16 +20,21 @@ def nest(request):
 
 def register(request):
 
+	# If   the method is a POST request
+
 	if request.method == 'POST':
 
+# Create the form object containing the type of request
 		form = CreateAccountForm(request.POST)
 
+# If the data populating the fields are valid then save the form and redirect
+# to home page
 		if form.is_valid():
 			form.save()
 			return redirect('/Identity')
 
 		else:
-			return redirect(reverse('Identities:logout'))
+			return redirect(reverse('Identities:create_account'))
 
 	else:
 
@@ -90,4 +95,6 @@ def change_password(request):
 		form = PasswordChangeForm(user = request.user)
 
 		var = {'form': form}
+
+		# Create change_password instance a place in the the template context
 		return render(request, 'Identities/change_password.html', var)

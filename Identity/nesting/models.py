@@ -12,3 +12,9 @@ class Identity_unique(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     Timestamp = models.DateTimeField(auto_now = True)
+
+    First_Name = models.CharField(max_length = 80, null = True,  )
+
+    Last_Name = models.CharField(max_length = 80, null = True, )
+
+    Residence = models.CharField(max_length = 80, blank = True )

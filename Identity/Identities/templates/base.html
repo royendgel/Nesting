@@ -2,7 +2,7 @@
 
 	<head>
 		   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
+<script src="https://use.fontawesome.com/549e888999.js"></script>
 
 		   	{% block head %}
 		   	{% endblock %}
@@ -24,7 +24,7 @@
 		<div class  = " container">
 
 
-		<a class = "navbar-brand float-left" href = "{% url 'Identities:nest'%}">nest</a>
+		<a class = "navbar-brand float-left" href = "{% url 'Identities:nest'%}">Nest</a>
 
 
 {% if user.is_authenticated %}
@@ -32,11 +32,10 @@
 			<ul class = "nav navbar-nav flex-row float-left ">
 		        <li class="nav-item"> <a class="nav-link font-weight-bold" style = "font-family: Optima" href = "{% url 'nesting:nesting'%}">  Creator :  {{ user.first_name}} {{ user.last_name}}</a></li>
 						<li class = "nav-item "><a class = "nav-link" href = "{% url 'Identities:logout'%}">Sign Out</a></li>
-						<li class = "nav-item"><a class = "nav-link" href = "{% url 'Identities:view_profile' %}">view Identity </a></li>
- 						<li class = "nav-item"><a class = "nav-link" href = "{% url 'Identities:edit_profile' %}">edit Identity </a></li>
+						<!-- <li class = "nav-item"><a class = "nav-link" href = "{% url 'Identities:view_profile' %}">view Identity </a></li> -->
+ 						<!-- <li class = "nav-item"><a class = "nav-link" href = "{% url 'Identities:edit_profile' %}">edit Identity </a></li> -->
 
-								<li class = "nav-item "><a class = "nav-link" href = "{% url 'Identities:change_password'%}">Change password</a></li>
-
+								<!-- <li class = "nav-item "><a class = "nav-link" href = "{% url 'Identities:change_password'%}">Change password</a></li> -->
 
 			</ul>
 
@@ -51,7 +50,7 @@
 			<ul class = "nav navbar-nav flex-row float-left ">
 
 			<li class = "nav-item "><a class="nav-link" href = "{% url 'Identities:login'%}">Sign In</a></li>
-
+		<li class = "nav-item "><a class = "nav-link" href = "{% url 'Identities:register'%}">Sign Up</a></li>
 			</ul>
 
 

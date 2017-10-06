@@ -16,11 +16,15 @@
 <form method = "post">
 
 		{% csrf_token %}
-		{{ form.as_p }}
 
-	<button class = "btn btn-primary btn-large" type="submit">Create Account
-	</button>
-	
+<div class = "form-group">
+
+	{{ form.as_ul}}
+
+						<button class = "btn btn-primary btn-large" type="submit">Create Account</button>
+</div>
+
+
 </form>
 </div>
 
