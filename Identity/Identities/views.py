@@ -34,7 +34,7 @@ def register(request):
 			return redirect('/Identity')
 
 		else:
-			return redirect(reverse('Identities:create_account'))
+			return redirect(reverse('Identities:logout'))
 
 	else:
 
