@@ -33,15 +33,16 @@ class Identity_Form(forms.ModelForm):
         )
     )
 
-    Residence = forms.CharField(
+    location = forms.CharField(
 
-       widget=forms.TextInput(
-               attrs={
+            widget=forms.TextInput(
+                        attrs= {
 
-                   'placeholder': 'Enter Address',
-                   'class' : 'form-control'
-               }
-        )
+                        'placeholder':'Enter Address',
+                        'class':'form-control'
+
+                        }
+            )
     )
 
 
@@ -50,4 +51,4 @@ class Identity_Form(forms.ModelForm):
 
         model = Identity_unique
 
-        fields = ('NIS', 'First_Name', 'Last_Name', 'Residence', )
+        fields = ('NIS', 'First_Name', 'Last_Name', 'location',)

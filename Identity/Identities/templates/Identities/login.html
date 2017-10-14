@@ -21,9 +21,7 @@
 
 				{% block body %}
 
-<div class = "container">
-
-		<h1 class = "font-weight-bold" style = "font-family: Optima; text-align: center;  margin-top: 80px; padding: 30px; "> <small>Access your Health Condition when you need it.</small> </h1>
+<div class = "container" style="margin-top: 80px;">
 
 
 				<form method="post" >
@@ -36,7 +34,16 @@
 
 				</form>
 
-        <li class="nav-item"><a class = "nav-link"href = "{% url 'Identities:reset_password' %}" style="background-color:black; width:300px;"><small>Create new password</small></a></li>
+
+
+<div class = "col-sm-3">
+
+
+   <a class = "nav-link" href = "{% url 'Identities:reset_password' %}" >Create new password</a>
+
+
+</div>
+
 
 
 			</div>

@@ -17,10 +17,4 @@ class Identity_unique(models.Model):
 
     Last_Name = models.CharField(max_length = 80, null = True, )
 
-    Residence = models.CharField(max_length = 80, blank = True )
-
-    DOB = models.DateField(auto_now = False )
-
-    def calculate_age(born):
-        Today = date.today()
-        return Today.year - born.year - ((Today.month, today.day) < (born.month, born.day))
+    location = models.CharField(max_length = 100, blank = True)

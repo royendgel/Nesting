@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView, ListView
 from nesting.forms import Identity_Form
 from nesting.models import Identity_unique
 
@@ -11,18 +10,16 @@ class Identity_view(TemplateView):
     template_name = 'nesting/nesting.html'
 
     def get(self, request):
-
-
         # Create view logic
 
         # Instantiate Identity Form
 
         form = Identity_Form()
 
-
-
         Identities = Identity_unique.objects.filter(user = request.user)
+
         var = {'form': form, 'Identities': Identities}
+
         return render(request, self.template_name, var)
 
     def post(self, request):
@@ -56,3 +53,21 @@ class Identity_view(TemplateView):
 
 
 # Sript code to ensure that if the user reloads it returns a fresh from for the user to fill.
+
+class Identity_nest_list_view(TemplateView):
+
+
+    # Create Identity_nest_list_view logic
+#
+    model = Identity_unique
+
+    template_name = 'nesting/Identity_nest.html'
+
+
+    def get(self, request):
+
+        form = Identity_Form()
+
+        Identities = Identity_unique.objects.filter(user=request.user)
+        var = {'form':form, 'Identities': Identities}
+        return render(request, self.template_name, var)

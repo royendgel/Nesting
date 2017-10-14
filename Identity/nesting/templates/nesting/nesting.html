@@ -19,74 +19,85 @@
     {% block body %}
 
     <style media="screen">
-      #navigation{
+      #navigation {
 
       margin-top: 90px;
 
       }
-
-      .col-md-5{
-                  margin-top: 70px;
-
-      }
-
-.container {
-
-}
 
     </style>
 
     <div class = "container">
 
             <div class = "row">
-                                <nav class="col-md-3"  id = "navigation">
+                                <nav class="col-md-3"  style="  margin-top: 90px;">
 
                                   <ul class = "nav flex-column">
                                                     <li class = "nav-item"> <a class = "nav-link" style = "font-family: Droid Sans Mono" href = "{% url 'nesting:nesting'%}">Create patient </a></li>
-                                                   <li class = "nav-item"><a class = "nav-link" href = "#" style = "font-family: Droid Sans Mono">See  patient </a></li>
+                                                   <li class = "nav-item"><a class = "nav-link" href = "{% url 'nesting:Identity_nest_list'%}" style = "font-family: Droid Sans Mono">See  patient </a></li>
                                     </ul>
 
                                 </nav>
 
-            <main class = "col-md-5">
+            <main class = "col-md-7"  style="  margin-top: 90px;">
 
                       <form method = 'post' novalidate>
 
-                   {% csrf_token %}
-                   <div class = "form-row">
+                        {% csrf_token %}
 
-                     <div class = "form-group col-sm-6">
-                                   {{ form.NIS.errors }}
-                                   {{ form.NIS}}
-                     </div>
-
-                   <div class = "form-group col-sm-6">
-
-                   </div>
-
-                   </div>
-
-        <div class = "form-row">
-
-          <div class = "form-group col-sm-6">
-                        {{ form.First_Name.errors }}
-                        {{ form.First_Name}}
-          </div>
-
-        <div class = "form-group col-sm-6">
-                      {{ form.Last_Name.errors }}
-                      {{ form.Last_Name}}
-        </div>
-
-        </div>
+                        {% if form.non_field_errors %}
+                                      <div class="alert alert-danger" role="alert">
+                                        {% for error in form.non_field_errors %}
+                                          {{ error }}
+                                        {% endfor %}
+                                      </div>
+                          {% endif %}
 
 
-        <div class = "form-group">
-          {{ form.Residence.errors }}
-          {{ form.Residence }}
-        </div>
 
-    
+
+                                    <div class = "form-row">
+
+                                      <div class = "form-group col-md-6">
+
+                                        {{form.NIS.errors}}
+                                        {{form.NIS}}
+
+                                      </div>
+
+                                    </div>
+
+                                    <div class = "form-row">
+
+                                      <div class = "form-group col-md-6">
+
+                                        {{form.First_Name.errors}}
+                                        {{form.First_Name}}
+
+                                      </div>
+
+                                      <div class = "form-group col-md-6">
+
+                                        {{form.Last_Name.errors}}
+                                        {{form.Last_Name}}
+
+                                      </div>
+
+                                    </div>
+
+                                    <div class = "form-row">
+
+                                      <div class = "form-group col-md-6">
+
+                                        {{form.location.errors}}
+                                        {{form.location}}
+
+                                      </div>
+                                    </div>
+
+
+
+
 <button class = "btn-primary btn-large btn ">Submit</button>
 
  </form>
@@ -95,35 +106,6 @@
 </main>
             </div>
 
-
-
-
-
-            {% for Identity in Identities %}
-
-            <div class = "row">
-
-              <div class="col-sm" ></div>
-
-              <div class = "col-sm" >
-
-                <div class = "card " style = "margin-top: 40px;">
-
-                        <ul class = "list-group list-group-flush">
-
-                          <li class = "list-group-item"><a class = "nav-link" href="#">{{Identity.First_Name}}  {{Identity.Last_Name}} </a></li>
-
-                          <li class = "list-group-item"><small><br>NIS: </small> {{ Identity.NIS }}</li>
-
-                        </ul>
-                </div>
-
-              </div>
-
-            <div class="col-sm"></div>
-
-            </div>
-                      {% endfor %}
 
 
     {% endblock %}

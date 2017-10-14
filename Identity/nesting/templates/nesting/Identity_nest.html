@@ -1,4 +1,4 @@
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +15,40 @@
 
 {% block body %}
 
+<div class = "row" style = "margin-top: 80px;">
+
+  <div class="col-sm" >
+
+      <nav class =" "  >
+
+        <ul class = "nav flex-column">
+
+                         <li class = "nav-item"><a class = "nav-link" href = "{% url 'nesting:nesting'%}" style = "font-family: Droid Sans Mono">Create  patient </a></li>
+                         <li class = "nav-item"><a class = "nav-link" href = "#" style = "font-family: Droid Sans Mono">Update </a></li>
+                         <li class = "nav-item"><a class = "nav-link" href = "#" style = "font-family: Droid Sans Mono">Move to Trash </a></li>
+          </ul>
+
+      </nav>
+  </div>
+
+  <div class = "col-sm" >
+
+{% for Identity in Identities %}
+
+    <div class = "card " style = "margin-top: 20px;" >
+
+            <ul class = "list-group list-group-flush">
+
+              <li class = "list-group-item"><a class = "nav-link" href="#">{{Identity.First_Name}}  {{Identity.Last_Name}} </a> <p>NIS:  {{ Identity.NIS }}</p></li>
+
+            </ul>
+    </div>
+          {% endfor %}
+  </div>
+
+<div class="col-sm" ></div>
+
+</div>
 
 {% endblock %}
   </body>
