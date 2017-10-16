@@ -79,24 +79,14 @@ class Identity_Form(forms.ModelForm):
 
 
 
+class Symptoms_Form(forms.ModelForm):
 
-class Symptom_Form(forms.ModelForm):
+
+    Symptoms_description = forms.CharField()
 
 
-                Symptoms_description = forms.CharField(
+    class Meta:
 
-                widget=forms.Textarea(
-                            attrs= {
+        model = Symptoms
 
-                            'placeholder':'Symptom description',
-                            'class':'form-control'
-
-                            }
-                )
-    )
-
-                class Meta:
-
-                    model = Symptoms
-
-                    fields = ('Symptoms_description',)
+        fields = ('Symptoms_description',)

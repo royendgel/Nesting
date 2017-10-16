@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+
+    {% block head %}
+  <head>
+    <meta charset="utf-8">
+    <title> Symptom Description</title>
+  </head>
+
+  {% endblock %}
+  <body>
+
+
+{% block body %}
+
+<form method = 'post' novalidate>
+
+  {% csrf_token %}
+
+  {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                  {% for error in form.non_field_errors %}
+                    {{ error }}
+                  {% endfor %}
+                </div>
+    {% endif %}
+
+
+<div class="container" style= "margin-top:90px;">
+
+  <div class="row">
+
+  <div class="col-sm-9">
+
+    <div class = "form-row">
+
+    <div class = "form-group">
+
+      {{form.Symptoms_description.errors}}
+      {{form.Symptoms_description}}
+
+    </div>
+
+
+  </div>
+
+    <button class = "btn-primary btn-large btn ">Submit</button>
+</div>
+
+
+  <div class="col-sm-3">
+
+  {% for Symptom in Symptoms_desc %}
+      <p>{{ Symptom.Symptoms_description }}</p>
+{% endfor %}
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</form>
+
+{% endblock %}
+  </body>
+</html>

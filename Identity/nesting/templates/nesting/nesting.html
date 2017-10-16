@@ -20,7 +20,6 @@
 
     <style media="screen">
       #navigation {
-
       margin-top: 90px;
 
       }
@@ -32,9 +31,21 @@
             <div class = "row">
                                 <nav class="col-md-3"  style="  margin-top: 90px;">
 
+
+                                  <div class = "dropdown">
+
+                                    <a class="dropdown-toggle nav-link" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Medical Content
+                                      </a>
+
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    </div>
+
+                                  </div>
+
                                   <ul class = "nav flex-column">
-                                                    <li class = "nav-item"> <a class = "nav-link" style = "font-family: Droid Sans Mono" href = "{% url 'nesting:nesting'%}">Create patient </a></li>
-                                                   <li class = "nav-item"><a class = "nav-link" href = "{% url 'nesting:Identity_nest_list'%}" style = "font-family: Droid Sans Mono">See  patient </a></li>
+                                                    <li class = "nav-item"> <a class = "nav-link"  href = "{% url 'nesting:nesting'%}"><small>Create patient</small> </a></li>
+                                                   <li class = "nav-item"><a class = "nav-link" href = "{% url 'nesting:Identity_nest_list'%}" ><small>See  patient </small></a></li>
                                     </ul>
 
                                 </nav>
@@ -62,6 +73,13 @@
 
                                         {{form.NIS.errors}}
                                         {{form.NIS}}
+
+                                      </div>
+
+                                      <div class = "form-group col-md-6">
+
+                                        {{form.Contact.errors}}
+                                        {{form.Contact}}
 
                                       </div>
 
@@ -93,7 +111,18 @@
                                         {{form.location}}
 
                                       </div>
+
+
+
+                                        <div class = "form-group col-md-6">
+
+                                          {{form.date_of_birth.errors}}
+                                          {{form.date_of_birth}}
+
+                                        </div>
+
                                     </div>
+
 
 
 

@@ -23,9 +23,9 @@
 
         <ul class = "nav flex-column">
 
-                         <li class = "nav-item"><a class = "nav-link" href = "{% url 'nesting:nesting'%}" style = "font-family: Droid Sans Mono">Create  patient </a></li>
-                         <li class = "nav-item"><a class = "nav-link" href = "#" style = "font-family: Droid Sans Mono">Update </a></li>
-                         <li class = "nav-item"><a class = "nav-link" href = "#" style = "font-family: Droid Sans Mono">Move to Trash </a></li>
+                         <li class = "nav-item"><a class = "nav-link" href = "{% url 'nesting:nesting'%}" ><small>Create  patient </small></a></li>
+                         <li class = "nav-item"><a class = "nav-link" href = "#"><small>Update </small></a></li>
+                         <li class = "nav-item"><a class = "nav-link" href = "#"><small>Move to Trash</small> </a></li>
           </ul>
 
       </nav>
@@ -37,10 +37,10 @@
 
     <div class = "card " style = "margin-top: 20px;" >
 
-            <ul class = "list-group list-group-flush">
+            <ul class = "list-group list-group-flush"> <li class = "list-group-item"> <small class = "text-muted">Created On : {{Identity.Timestamp}}</small></li>
 
-              <li class = "list-group-item"><a class = "nav-link" href="#">{{Identity.First_Name}}  {{Identity.Last_Name}} </a> <p>NIS:  {{ Identity.NIS }}</p></li>
-
+              <li class = "list-group-item"><a class = "nav-link" href="{%url 'nesting:Symptoms_nest_list'%}">{{Identity.First_Name}}  {{Identity.Last_Name}} </a> <p>NIS:  {{ Identity.NIS }}</p></li>
+              <li class = "list-group-item"><p> <small>Contact: {{ Identity.Contact}}</small></p></a></li>
             </ul>
     </div>
           {% endfor %}

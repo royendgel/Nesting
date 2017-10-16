@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
-from nesting.forms import Identity_Form
-from nesting.models import Identity_unique
+from nesting.forms import Identity_Form, Symptom_Form
+from nesting.models import Identity_unique, Symptoms
 
 # Create your views here.
 
@@ -56,9 +56,8 @@ class Identity_view(TemplateView):
 
 class Identity_nest_list_view(TemplateView):
 
-
     # Create Identity_nest_list_view logic
-#
+
     model = Identity_unique
 
     template_name = 'nesting/Identity_nest.html'
@@ -68,6 +67,61 @@ class Identity_nest_list_view(TemplateView):
 
         form = Identity_Form()
 
-        Identities = Identity_unique.objects.filter(user=request.user)
+        Identities = Identity_unique.objects.filter(user = request.user).order_by('-Timestamp')
         var = {'form':form, 'Identities': Identities}
         return render(request, self.template_name, var)
+
+
+
+
+
+class Symptoms_document_view(TemplateView):
+
+    model = Symptoms
+
+    template_name = 'nesting/Symptoms_list.html'
+
+    def get(self, request):
+
+        form = Symptom_Form()
+
+
+        Symptoms_desc = Symptoms.objects.all()
+
+
+        var = {'form':form, 'Symptoms_desc':Symptoms_desc}
+
+
+        return render(request, self.template_name, var)
+
+
+
+    def post(self, request):
+
+        form = Symptom_Form(request.POST or None)
+
+        Symptom_content = None
+
+        if form.is_valid():
+
+            Symptoms_description = form.save(commit = False)
+            Symptoms_description.user = request.user
+            Symptoms_description.save()
+
+            Symptom_content = form.cleaned_data['Symptoms_description']
+
+            form = Symptom_Form()
+
+
+            redirect('nesting:nesting')
+
+        var = {'form': form, 'Symptom_content': Symptom_content}
+
+        return render(request, self.template_name, var)
+
+
+
+
+class Symptom_nest_list_view(TemplateView):
+
+    pass
