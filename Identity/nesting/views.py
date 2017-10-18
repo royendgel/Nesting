@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from nesting.forms import Identity_Form, Symptom_Form
-from nesting.models import Identity_unique, Symptoms
+from nesting.models import Identity_unique, Symptom_relation
 
 # Create your views here.
 
@@ -77,7 +77,7 @@ class Identity_nest_list_view(TemplateView):
 
 class Symptoms_document_view(TemplateView):
 
-    model = Symptoms
+    model = Symptom_relation
 
     template_name = 'nesting/Symptoms_list.html'
 
@@ -86,7 +86,7 @@ class Symptoms_document_view(TemplateView):
         form = Symptom_Form()
 
 
-        Symptoms_desc = Symptoms.objects.all()
+        Symptoms_desc = Symptom_relation.objects.all()
 
 
         var = {'form':form, 'Symptoms_desc':Symptoms_desc}
@@ -98,17 +98,17 @@ class Symptoms_document_view(TemplateView):
 
     def post(self, request):
 
-        form = Symptom_Form(request.POST or None)
+        form = Symptom_Form(request.POST )
 
         Symptom_content = None
 
         if form.is_valid():
 
-            Symptoms_description = form.save(commit = False)
-            Symptoms_description.user = request.user
-            Symptoms_description.save()
+            Symptom_description = form.save(commit = False)
+            Symptom_description.user = request.user
+            Symptom_description.save()
 
-            Symptom_content = form.cleaned_data['Symptoms_description']
+            Symptom_content = form.cleaned_data['Symptom_description']
 
             form = Symptom_Form()
 
@@ -122,6 +122,19 @@ class Symptoms_document_view(TemplateView):
 
 
 
-class Symptom_nest_list_view(TemplateView):
+class Medical_History_nest_view(TemplateView):
 
-    pass
+
+    model = Symptom_relation
+
+    template_name = 'nesting/Medical_History_nest.html'
+
+    def get(self, request):
+
+        form = Symptom_Form()
+
+        Symptoms_desc = Symptom_relation.objects.all()
+
+        var = {'form':form, 'Symptoms_desc':Symptoms_desc}
+
+        return render(request, self.template_name, var)

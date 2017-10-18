@@ -1,6 +1,7 @@
 from django import forms
 from nesting.models import Identity_unique
-from nesting.models import Symptoms
+from nesting.models import Symptom_relation
+
 
 class Identity_Form(forms.ModelForm):
 
@@ -46,16 +47,17 @@ class Identity_Form(forms.ModelForm):
             )
     )
 
-    date_of_birth = forms.CharField(
+    date_of_birth = forms.DateField(
 
+            required = False,
                 widget=forms.TextInput(
                             attrs= {
 
-                            'placeholder':'Enter Date of Birth',
+                            'placeholder' : 'Enter birth day',
                             'class':'form-control'
 
                             }
-                )
+                ),
         )
 
     Contact = forms.CharField(
@@ -83,7 +85,7 @@ class Identity_Form(forms.ModelForm):
 class Symptom_Form(forms.ModelForm):
 
 
-                Symptoms_description = forms.CharField(
+                Symptom_description = forms.CharField(
 
                 widget=forms.Textarea(
                             attrs= {
@@ -95,8 +97,22 @@ class Symptom_Form(forms.ModelForm):
                 )
     )
 
+                Symptom_name = forms.CharField(
+
+
+                    widget=forms.TextInput(
+                                attrs= {
+
+                                'placeholder':'Symptom Name',
+                                'class':'form-control'
+
+                                }
+                    )
+
+                )
+
                 class Meta:
 
-                    model = Symptoms
+                    model = Symptom_relation
 
-                    fields = ('Symptoms_description',)
+                    fields = ('Symptom_name', 'Symptom_description',)

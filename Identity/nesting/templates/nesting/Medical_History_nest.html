@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+
+    {% block head %}
+  <head>
+    <meta charset="utf-8">
+    <title> Symptom Description</title>
+  </head>
+
+  {% endblock %}
+  <body>
+
+
+{% block body %}
+
+
+<div class = "container" style= "margin-top:90px;">
+
+  <div class="col-sm-8">
+
+
+  {% for Symptom in Symptoms_desc %}
+
+  <div class = "panel"  >
+
+<ul class = "list-group list-group-flush">
+
+  <h3 class = "text-muted list-group-item"> {{ Symptom.Symptom_name }}</h3>
+
+      <p class = "list-group-item">{{ Symptom.Symptom_description }}</p>
+
+    </ul>
+          </div>
+{% endfor %}
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
+  </body>
+</html>
