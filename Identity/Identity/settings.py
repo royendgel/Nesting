@@ -88,11 +88,7 @@ WSGI_APPLICATION = 'Identity.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nest',
-		'USER': 'nestuser',
-		'PASSWORD': 'password',
-		'HOST': 'localhost',
-		'PORT': '5432',
+        'NAME': 'nesting',
     }
 }
 

@@ -40,10 +40,10 @@
             <ul class = "list-group list-group-flush">
                <li class = "list-group-item"> <small class = "text-muted">Created On : {{Identity.Timestamp}}</small></li>
 
-              <li class = "list-group-item"><a class = "nav-link" href = "{% url 'nesting:Medical_History_nest' %}" >{{Identity.First_Name}}  {{Identity.Last_Name}} </a> <p>NIS:  {{ Identity.NIS }}</p></li>
+              <li class = "list-group-item"><a class = "nav-link" href = "{% url 'nesting:Medical_History_nest' Identity.pk %}" >{{Identity.First_Name}}  {{Identity.Last_Name}} </a> <p>NIS:  {{ Identity.NIS }}</p></li>
               <li class = "list-group-item"><p> <small>Contact: {{ Identity.Contact}}</small></p></a></li>
               <li class = "list-group-item"><p> <small>Birthday: {{ Identity.date_of_birth}}</small></p></a></li>
-              <li class = "list-group-item"><a class = "nav-link" href = "{%url 'nesting:Symptoms_nest_list'%}" ><small>Create Medical State </small></a></li>
+              <li class = "list-group-item"><a class = "nav-link" href = "{%url 'nesting:Symptoms_nest_list' Identity.pk %}" ><small>Create Medical State </small></a></li>
 
             </ul>
     </div>

@@ -40,7 +40,7 @@ class Symptom_relation(models.Model):
 
     Symptom_description = models.TextField(max_length = 1000, default = '')
 
-    Unique_Identity = models.ManyToManyField(Identity_unique, blank = False)
+    Unique_Identity = models.ManyToManyField(Identity_unique, blank = False, related_name='symptoms')
 
 
 

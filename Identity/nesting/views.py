@@ -81,12 +81,13 @@ class Symptoms_document_view(TemplateView):
 
     template_name = 'nesting/Symptoms_list.html'
 
-    def get(self, request):
+    def get(self, request, pk):
 
         form = Symptom_Form()
 
 
-        Symptoms_desc = Symptom_relation.objects.all()
+        Symptoms_desc = Symptom_relation.objects.all()[:1]
+        # Symptoms_desc = Identity_unique.objects.get(pk=pk).Symptom_relation_set
 
 
         var = {'form':form, 'Symptoms_desc':Symptoms_desc}
@@ -96,7 +97,7 @@ class Symptoms_document_view(TemplateView):
 
 
 
-    def post(self, request):
+    def post(self, request, pk):
 
         form = Symptom_Form(request.POST )
 
@@ -106,9 +107,13 @@ class Symptoms_document_view(TemplateView):
 
             Symptom_description = form.save(commit = False)
             Symptom_description.user = request.user
-            Symptom_description.save()
-
             Symptom_content = form.cleaned_data['Symptom_description']
+
+            Symptom_description.save()
+            ident = Identity_unique.objects.get(pk=pk)
+
+            Symptom_description.Unique_Identity.add(ident)
+            Symptom_description.save()
 
             form = Symptom_Form()
 
@@ -129,11 +134,12 @@ class Medical_History_nest_view(TemplateView):
 
     template_name = 'nesting/Medical_History_nest.html'
 
-    def get(self, request):
+    def get(self, request, pk):
 
         form = Symptom_Form()
 
         Symptoms_desc = Symptom_relation.objects.all()
+        Symptoms_desc = Identity_unique.objects.get(pk=pk).symptoms.all()
 
         var = {'form':form, 'Symptoms_desc':Symptoms_desc}
 
